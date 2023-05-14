@@ -29,13 +29,16 @@ public class Classroom {
         double sum = 0.0;
         int count = 0;
         for (int i = 0; i < students.length; i++) {
-            if (students[i] != null) {
+
                 double examScore = students[i].getAverageExamScore();
                 sum += examScore;
                 count++;
-            }
+
         }
-        return sum / count;
+
+        String formattedAverage = String.format("%.2f",  sum / count);
+
+        return Double.parseDouble(formattedAverage);
     }
 
 
@@ -68,21 +71,16 @@ public class Classroom {
 
 
     public Student[] getStudentsByScore() {
+
         Student[] sortedStudents = Arrays.copyOf(students, students.length);
+
         Arrays.sort(sortedStudents, (a, b) -> {
-            if (a == null) {
-                return 1;
-            } else if (b == null) {
-                return -1;
-            } else {
-                int scoreComparison = Double.compare(b.getAverageExamScore(), a.getAverageExamScore());
-                if (scoreComparison == 0) {
-                    return a.getLastName().compareTo(b.getLastName());
-                } else {
-                    return scoreComparison;
-                }
-            }
+
+            int scoreComparison = Double.compare(b.getAverageExamScore(), a.getAverageExamScore());
+               return scoreComparison;
         });
+
+
         return sortedStudents;
     }
 

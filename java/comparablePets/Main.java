@@ -17,7 +17,7 @@ public class Main {
         ArrayList<Pet> pets = new ArrayList<Pet>();
 
         for (int i = 0; i < numPets; i++) {
-           System.out.println("What type of animal is your first pet?");
+           System.out.println("What type of animal is your "+ (i + 1) +" pet?");
             String petType = scanner.nextLine();
 
             System.out.println("What is its name?");
@@ -32,6 +32,7 @@ public class Main {
             }
         }
 
+        //sorting pets alphabetically by their name
         Collections.sort(pets);
 
         PetComparator petComparator = new PetComparator();
